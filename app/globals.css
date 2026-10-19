@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), "Iowan Old Style", Palatino, Georgia, serif;
+  --font-mono: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+html {
+  background: #faf9f6;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  text-wrap: pretty;
+}
+
+::selection {
+  background: #e8e4da;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enter {
+  animation-name: enter;
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.link-draw {
+  text-decoration: none;
+  background-image: linear-gradient(#3f3f3f, #3f3f3f),
+    linear-gradient(#d6d6d2, #d6d6d2);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 1px), 0 calc(100% - 1px);
+  background-size: 0% 1px, 100% 1px;
+  transition: background-size 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 200ms ease-out;
+}
+
+.link-draw:hover,
+.link-draw:focus-visible {
+  background-size: 100% 1px, 100% 1px;
+  color: #1f1f1f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-draw {
+    transition: none;
+  }
+}
